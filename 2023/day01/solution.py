@@ -1,5 +1,6 @@
 import math
 
+
 class Solution:
     def __init__(self):
         self.data = []
@@ -14,18 +15,14 @@ class Solution:
             first_digit = 0
             last_digit = 0
             for letter in line:
-                try:
+                if letter.isdigit():
                     first_digit = int(letter)
                     break
-                except ValueError:
-                    pass
 
             for letter in line[::-1]:
-                try:
+                if letter.isdigit():
                     last_digit = int(letter)
                     break
-                except ValueError:
-                    pass
 
             sum += first_digit * 10 + last_digit
 
@@ -64,21 +61,16 @@ class Solution:
                             last_digit = dict[key]
 
             for letter in line:
-                try:
-                    if line.index(letter) < first_digit_index:
+                if line.index(letter) < first_digit_index:
+                    if letter.isdigit():
                         first_digit = int(letter)
-                        first_digit_index = line.index(letter)
                         break
-                except ValueError:
-                    pass
 
             for i, letter in enumerate(line[::-1]):
-                try:
-                    if len(line) - i > last_digit_index:
+                if len(line) - i > last_digit_index:
+                    if letter.isdigit():
                         last_digit = int(letter)
                         break
-                except ValueError:
-                    pass
 
             sum += first_digit * 10 + last_digit
 
